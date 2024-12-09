@@ -9,36 +9,7 @@ public class StudentInfoLogic
     public StudentInfoLogic(){}
 
     Scanner scan = new Scanner (System.in);
-    StudentInfo info = new StudentInfo(gpa,name,sat);
 
-    private void select()
-    {
-        int college = (int) (Math.random() * 6);
-        if (college == 0)
-        {
-            info.Columbia();
-        }
-        if (college == 1)
-        {
-            info.Fordham();
-        }
-        if (college ==2)
-        {
-            info.SUNYBuffaloState();
-        }
-        if (college == 3)
-        {
-            info.CUNYCityCollege();
-        }
-        if (college ==4)
-        {
-            info.Cornell();
-        }
-        if (college == 5)
-        {
-            info.UConn();
-        }
-    }
 
     public void askForInfo()
     {
@@ -90,6 +61,7 @@ public class StudentInfoLogic
         return (double) (sum)/classAmt;
     }
 
+
     public void begin()
     {
         double tempGpa;
@@ -104,9 +76,9 @@ public class StudentInfoLogic
             tempGpa=avgCalc();
             askForInfo(tempGpa);
         }
-        System.out.print("Your grade converted in the 4.0 scale is a ");
+        StudentInfo info = new StudentInfo(gpa,name,sat);
+        System.out.println("Your grade converted in the 4.0 scale is a " + info.gpaConvert());
         double gpa4 = info.gpaConvert();
-        System.out.println(info.gpaConvert());
         boolean passing = info.passing();
         if (passing) {
             if (gpa4 >= 3.8) {
@@ -130,17 +102,30 @@ public class StudentInfoLogic
         else {
             System.out.println("Your SAT score is too low for most top colleges. ");
         }
-        System.out.println("Here are your SAT and GPA relative to the scores in our randomly selected colleges.");
-        System.out.println("Would you like to see more? (y/n");
-        String ans = scan.nextLine();
-        int loopIndicator = 0;
-        while (loopIndicator!=1) {
-            if (ans.equals("y")) {
-                select();
-            } else {
-                System.out.println("Thank you for using the Student Tracker!");
-                loopIndicator=1;
-            }
+        int college = (int) (Math.random() * 6);
+        if (college == 0)
+        {
+            info.Columbia();
+        }
+        if (college == 1)
+        {
+            info.Fordham();
+        }
+        if (college ==2)
+        {
+            info.SUNYBuffaloState();
+        }
+        if (college == 3)
+        {
+            info.CUNYCityCollege();
+        }
+        if (college ==4)
+        {
+            info.Cornell();
+        }
+        if (college == 5)
+        {
+            info.UConn();
         }
     }
 }
