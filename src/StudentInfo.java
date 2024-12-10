@@ -31,44 +31,21 @@ public class StudentInfo
     }
 
 
-    public double gpaConvert()
-    {
-        if (gpa>=93)
-        {
-            return(4);
-        }
-        else if (gpa>=90)
-        {
-            return (3.7);
-        }
-        else if (gpa>=87)
-        {
-            return(3.3);
-        }
-        else if (gpa>=83)
-        {
-            return(3.0);
-        }
-        else if (gpa>=80)
-        {
-            return(2.7);
-        }
-        else if (gpa>=77)
-        {
-            return(2.3);
-        }
-        else if (gpa>=73)
-        {
-            return(2.0);
-        }
-        else if (gpa>=70)
-        {
-            return(1.7);
-        }
-        else {
-            return(1.3);
+   public double gpaConvert() {
+    
+    int[] thresholds = {93, 90, 87, 83, 80, 77, 73, 70};
+    double[] gpaValues = {4.0, 3.7, 3.3, 3.0, 2.7, 2.3, 2.0, 1.7};
+
+
+    for (int i = 0; i < thresholds.length; i++) {
+        if (gpa >= thresholds[i]) {
+            return gpaValues[i];
         }
     }
+
+    return 1.3;
+}
+
     public void Columbia() {
         if (gpaConvert() == 4.0) {
             System.out.println("Your GPA is the average Columbia GPA!");
